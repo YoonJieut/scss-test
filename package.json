@@ -5,11 +5,14 @@
   "main": "app.js",
   "scripts": {
     "a": "echo \"난 지금 테스트 중이다\" && exit 1",
-    "yunjun" : "sass test.scss output-test.css"
+    "yunjun": "sass test.scss output-test.css"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "sass": "^1.69.1"
+  },
+  "dependencies": {
+    "pokemon": "^2.3.6"
   }
 }
