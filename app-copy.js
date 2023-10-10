@@ -15,19 +15,40 @@ for(i=0; i<pokemon.all().length; i++){
 // console.log(list);
 
 
+let data1 = 
+`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  ${list}
+</body>
+</html>
+`
+;
 
+//! 파일 생성
+fs.writeFile("포켓몬.html", data1 ,function(err){
+  if (err) {
+    console.error('파일을 읽지 못했습니다.');
+  }
+});
 
-// fun("포켓몬.html", `
-// <!DOCTYPE html>
-// <html lang="en">
-// <head>
-//   <meta charset="UTF-8">
-//   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//   <title>Document</title>
-// </head>
-// <body>
-//   ${list}
-// </body>
-// </html>
-// `)
+//! 서버 생성 및 파일 읽기
+http.createServer(function(request, response, data) {
+  response.writeHead(200, {'Content-Type' : 'text/html'});
+
+  fs.readFile("./포켓몬.html", function(err, data){
+    if(err){
+      console.error('에러');
+    } else {
+      response.end(data);
+    }
+  });
+}).listen(8080);
+
 
